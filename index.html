@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <base href="/">
+  <meta name="robots" content="noarchive, noindex">
+  <title>Schulmanager Online</title>
+  <meta name="description" content="">
+
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1, maximum-scale=1">
+  <meta name="application-name" content="Schulmanager Online"/>
+  <meta name="apple-mobile-web-app-title" content="Schulmanager">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-touch-fullscreen" content="yes"/>
+
+  <link rel="icon" type="image/png" sizes="48x48" href="static/assets/icons/favicon-48x48.png">
+  <link rel="apple-touch-icon" href="static/assets/icons/apple-touch-icon-192x192.png">
+  <link rel="manifest" href="static/manifest.webmanifest">
+  <meta name="theme-color" content="#428bca">
+
+  <script>
+    function reportStartupError (value) {
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', '/api/report-startup-error', true);
+      xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+      xhr.send(JSON.stringify(value));
+    }
+
+    function handleSmoStartupError (event, eventType = 'error') {
+      let message = 'unknown error';
+      if (event.message) {
+        message = event.message;
+      } else if (event.target && event.target.outerHTML) {
+        message = 'error with ' + event.target.outerHTML;
+      }
+      console.error(event);
+      reportStartupError({ message: message, filename: event.filename, lineno: event.lineno, colno: event.colno, eventType, source: 'index.html' });
+    }
+
+    function handleUnhandledSmoStartupRejection (event) {
+      handleSmoStartupError(event.reason, 'unhandledrejection');
+    }
+
+    window.addEventListener('error', handleSmoStartupError, true);
+    window.addEventListener('unhandledrejection', handleUnhandledSmoStartupRejection);
+  </script>
+<link rel="stylesheet" href="static/styles-D5LZ7ANB.css" crossorigin="anonymous"></head>
+<body>
+  <div class="loader"></div>
+  <svg width="4em" viewBox="0 0 9.2625 7.3995" xmlns="http://www.w3.org/2000/svg" class="loader-hat">
+    <g transform="translate(11.435 -56.776)" style="fill: #428bca;">
+      <path d="m-6.7684 56.843-4.5294 1.9968 1.0371 0.45837-0.33176 0.28215c-0.01881 0.01411-0.03498 0.02826-0.04909 0.04237-0.0094 0.01411-0.01645 0.03332-0.02119 0.05684 0 0.02351-0.0025 0.04221-0.0072 0.05633v0.07028c0.0047 0.02823 0.0072 0.05198 0.0072 0.0708v1.7637l-0.7059 1.0583v1.4113l1.0583-1.0511 1.0583 1.0439v-1.404l-0.70538-1.0583v-1.5803l0.55035-0.42323 2.667 1.1994 4.5015-1.9968zm-2.4836 3.6902v1.0371l2.4696 1.171 2.4696-1.171v-1.0371l-2.4696 1.1638z" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal;mix-blend-mode:normal;paint-order:stroke fill markers"/>
+    </g>
+  </svg>
+  <app-root></app-root>
+  <noscript>Der Schulmanager funktioniert nur, wenn Sie die AusfÃ¼hrung von Javascript erlauben.</noscript>
+<link rel="modulepreload" href="static/chunk-VSILRCKP.js"><link rel="modulepreload" href="static/chunk-2B4ZE46H.js"><link rel="modulepreload" href="static/chunk-PTPZV43B.js"><link rel="modulepreload" href="static/chunk-2IXOYK2I.js"><link rel="modulepreload" href="static/chunk-GHWGJD2K.js"><link rel="modulepreload" href="static/chunk-O7WWT6TI.js"><link rel="modulepreload" href="static/chunk-UTGO46H6.js"><link rel="modulepreload" href="static/chunk-RAHHGNX3.js"><link rel="modulepreload" href="static/chunk-VUAETGAE.js"><link rel="modulepreload" href="static/chunk-JPPA4PEX.js"><script src="static/polyfills-7LBLM2P2.js" type="module" crossorigin="anonymous"></script><script src="static/scripts-7E5CR6XL.js" defer crossorigin="anonymous"></script><script src="static/main-4S3CC6FW.js" type="module" crossorigin="anonymous"></script></body>
+</html>
